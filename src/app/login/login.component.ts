@@ -17,7 +17,7 @@ import {MainService} from '../api/main.service';
 export class LoginComponent implements OnInit {
   loading = false;
 
-  constructor(private main: MainService,
+  constructor(private mainService: MainService,
               private storage: LocalStorage,
               private notification: NzNotificationService,
               private router: Router,
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.bit.buildLanguage(Language.factory);
     this.bit.form = this.fb.group({
-      username: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+      mobile: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(18)]]
     });
   }
@@ -38,9 +38,10 @@ export class LoginComponent implements OnInit {
    */
   submit = (data) => {
     this.loading = true;
-    this.main.login(data.username, data.password).subscribe(res => {
+    console.log('提交');
+    this.mainService.login(data.mobile, data.password).subscribe(res => {
       if (!res.error) {
-        this.setStorage(data.username, res.data.token, res.data.refresh_token).subscribe(status => {
+        this.setStorage(data.mobile, res.data.token).subscribe(status => {
           if (status) {
             this.notification.success(this.bit.l['login_tips'], this.bit.l['login_success']);
             setTimeout(() => {
@@ -61,10 +62,9 @@ export class LoginComponent implements OnInit {
    * TODO:设置存储
    * @param username 用户名
    * @param token 执行令牌
-   * @param refresh_token 可刷新令牌
    */
-  setStorage(username: string, token: string, refresh_token: string): Observable<boolean> {
-    return this.storage.setItem('username', username).pipe(
+  setStorage(mobile: string, token: string): Observable<boolean> {
+    return this.storage.setItem('mobile', mobile).pipe(
       switchMap(status => {
         if (!status) {
           return of(status);
@@ -72,13 +72,6 @@ export class LoginComponent implements OnInit {
           return this.storage.setItem('token', token);
         }
       }),
-      switchMap(status => {
-        if (!status) {
-          return of(status);
-        } else {
-          return this.storage.setItem('refresh_token', refresh_token);
-        }
-      })
     );
   }
 

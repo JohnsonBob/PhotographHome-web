@@ -8,17 +8,17 @@
     <nz-form-item>
       <nz-form-control>
         <nz-input-group [nzSuffix]="usernameSuffix" nzPrefixIcon="anticon anticon-user">
-          <input type="text" nz-input [placeholder]="bit.l['username']" formControlName="username">
+          <input type="number" nz-input [placeholder]="bit.l['mobile']" formControlName="mobile">
         </nz-input-group>
         <ng-template #usernameSuffix>
-          <i class="anticon anticon-close-circle" *ngIf="bit.form.get('username').value"
-             (click)="bit.form.get('username').reset()"></i>
+          <i class="anticon anticon-close-circle" *ngIf="bit.form.get('mobile').value"
+             (click)="bit.form.get('mobile').reset()"></i>
         </ng-template>
-        <nz-form-explain *ngIf="bit.formExplain('username')">
-          <ng-container *ngIf="bit.explain('username','required')">
+        <nz-form-explain *ngIf="bit.formExplain('mobile')">
+          <ng-container *ngIf="bit.explain('mobile','required')">
             {{bit.l['username_require']}}
           </ng-container>
-          <ng-container *ngIf="bit.explain('username','minlength')||bit.explain('username','maxlength')">
+          <ng-container *ngIf="bit.explain('mobile','minlength')||bit.explain('mobile','maxlength')">
             {{bit.l['username_correctly']}}
           </ng-container>
         </nz-form-explain>

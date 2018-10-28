@@ -15,7 +15,7 @@ export class Auth implements CanActivate {
   }
 
   canActivate() {
-    return this.storage.getItem('username').pipe(
+    return this.storage.getItem('mobile').pipe(
       switchMap(data => {
         if (!data) {
           return this.checkAuthFailed();

@@ -1,6 +1,7 @@
 export class Language {
   static factory = {
     username: ['用户名称', 'Username'],
+    mobile: ['手机号码', 'mobileNumber'],
     username_require: ['请填写用户名', 'Please Enter Username'],
     username_correctly: ['请输入正确的用户名!', 'Please Enter Correctly Username!'],
     password: ['用户密码', 'Password'],

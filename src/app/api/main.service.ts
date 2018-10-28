@@ -13,9 +13,20 @@ export class MainService {
    * TODO:定义一个登录请求
    *
    */
-  login(username: string, password: string): Observable<any> {
+  loginn(mobile: string, password: string): Observable<any> {
     return this.http.req('api/login', {
-      username: username,
+      mobile: mobile,
+      password: password
+    });
+  }
+
+  /**
+   * TODO:定义一个登录请求
+   *
+   */
+  login(mobile: string, password: string): Observable<any> {
+    return this.http.req('api/login', {
+      mobile: mobile,
       password: password
     });
   }
