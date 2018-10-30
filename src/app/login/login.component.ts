@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     console.log('提交');
     this.mainService.login(data.mobile, data.password).subscribe(res => {
-      if (!res.error) {
+      if (res.code) {
         this.setStorage(data.mobile, res.data.token).subscribe(status => {
           if (status) {
             this.notification.success(this.bit.l['login_tips'], this.bit.l['login_success']);

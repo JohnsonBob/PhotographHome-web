@@ -9,16 +9,6 @@ export class MainService {
 
   constructor(private http: HttpService) { }
 
-  /**
-   * TODO:定义一个登录请求
-   *
-   */
-  loginn(mobile: string, password: string): Observable<any> {
-    return this.http.req('api/login', {
-      mobile: mobile,
-      password: password
-    });
-  }
 
   /**
    * TODO:定义一个登录请求
