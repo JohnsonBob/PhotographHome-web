@@ -10,6 +10,7 @@ const routes: Routes = [
     children: [
       // {path: '', loadChildren: './pages/welcome/welcome.module#WelcomeModule'},
       // {path: '{profile}', loadChildren: './pages/profile/profile.module#ProfileModule'},
+      // {path: 'register', loadChildren: './pages/register/register.module#RegisterModule'},
     ]
   }
 ];

@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.notification.success(this.bit.l['login_tips'], this.bit.l['login_success']);
             setTimeout(() => {
               this.loading = false;
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/register');
             }, 200);
           } else {
             this.loginFailed();

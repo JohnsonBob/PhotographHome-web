@@ -3,7 +3,7 @@ import {Language} from '../app/app.language';
 export const environment = {
   production: false,
   bit: {
-    origin: 'http://localhost',
+    origin: 'http://johnson.data.i-sanya.com',
     namespace: '',
     static: '',
     uploads: 'main/uploads',
