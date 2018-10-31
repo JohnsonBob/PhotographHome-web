@@ -28,4 +28,18 @@ export class MainService {
     return this.http.req('main/check');
   }
 
+  /**
+   * TODO:定义一个注册请求
+   *
+   */
+  register(name: string, password: string, email: string, mobile: string, nickname: string): Observable<any> {
+    return this.http.req('api/register', {
+      name: name,
+      password: password,
+      email: email,
+      mobile: mobile,
+      nickname: nickname,
+    });
+  }
+
 }

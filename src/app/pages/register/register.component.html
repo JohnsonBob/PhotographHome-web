@@ -1,3 +1,110 @@
-<p>
-  register works!
-</p>
+<form nz-form [formGroup]="bit.form" class="register-form" (submit)="bit.submit($event,submit)">
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>{{bit.l['username']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="username" formControlName="username">
+      <nz-form-explain *ngIf="bit.form.get('username').dirty && bit.form.get('username').errors">{{bit.l['username_require']}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{bit.l['emaile']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="email" id="email">
+      <nz-form-explain *ngIf="bit.form.get('email').dirty && bit.form.get('email').errors">{{bit.l['emaile_require']}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>{{bit.l['password']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()">
+      <!--<nz-form-explain *ngIf="
+      ('password','required')">{{bit.l['password_require']}}</nz-form-explain>-->
+      <nz-form-explain>
+        <ng-container *ngIf="bit.explain('password','required')">
+          {{bit.l['password_require']}}
+        </ng-container>
+        <ng-container *ngIf="bit.explain('password','minlength')||bit.explain('password','maxlength')">
+          {{bit.l['password_length']}}
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>{{bit.l['confirm_password']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input type="password" formControlName="checkPassword" id="checkPassword">
+      <nz-form-explain *ngIf="bit.form.get('checkPassword').dirty && bit.form.get('checkPassword').errors">
+        <ng-container *ngIf="bit.form.get('checkPassword').hasError('required')">
+          {{bit.l['password_confirm']}}
+        </ng-container>
+        <ng-container *ngIf="bit.form.get('checkPassword').hasError('confirm')">
+          {{bit.l['password_correctly']}}
+        </ng-container>
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired>
+          <span>
+            {{bit.l['nickname']}}
+            <i nz-icon nz-tooltip nzTitle="What do you want other to call you" type="question-circle" theme="outline"></i>
+          </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="nickname" formControlName="nickname">
+      <nz-form-explain *ngIf="bit.form.get('nickname').dirty && bit.form.get('nickname').errors">{{bit.l['nickname_require']}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="mobile" nzRequired>{{bit.l['mobile']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="bit.form.controls['mobile']">
+      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+        <ng-template #addOnBeforeTemplate>
+          <nz-select formControlName="mobilePrefix" style="width: 70px;">
+            <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+            <!--<nz-option nzLabel="+87" nzValue="+87"></nz-option>-->
+          </nz-select>
+        </ng-template>
+        <input formControlName="mobile" id="'mobile'" nz-input>
+      </nz-input-group>
+      <nz-form-explain *ngIf="bit.form.get('mobile').dirty && bit.form.get('mobile').errors">{{bit.l['mobile_require']}}</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!--验证码-->
+  <!--<nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha" nzRequired>{{bit.l['captcha']}}</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="12">
+          <input nz-input formControlName="captcha" id="captcha">
+        </div>
+        <div nz-col [nzSpan]="12">
+          <button nz-button (click)="getCaptcha($event)">Get captcha</button>
+        </div>
+      </div>
+      <nz-form-explain *ngIf="bit.form.get('captcha').dirty && bit.form.get('captcha').errors">Please input the captcha you got!</nz-form-explain>
+      <nz-form-extra>We must make sure that your are a human.</nz-form-extra>
+    </nz-form-control>
+  </nz-form-item>-->
+
+  <!--同意协议-->
+  <!--<nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="agree">
+        <span>I have read the <a>agreement</a></span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>-->
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">{{bit.l['register']}}</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

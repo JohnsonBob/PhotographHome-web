@@ -19,8 +19,8 @@ registerLocaleData(zh);
 const routes: Routes = [
   {path: '', loadChildren: './app.router.module#AppRouterModule', canActivate: [Auth]},
   {path: 'login', loadChildren: './login/login.module#LoginModule'},
-  {path: 'register', loadChildren: './app.router.module#AppRouterModule'},
-  // {path: 'register', loadChildren: './pages/register/register.module#RegisterModule'},
+  // {path: 'register', loadChildren: './app.router.module#AppRouterModule'},
+  {path: 'register', loadChildren: './pages/register/register.module#RegisterModule'},
 
 ];
 
