@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: DashboardsComponent,
     children: [
-      // {path: '', loadChildren: './pages/welcome/welcome.module#WelcomeModule'},
+      {path: '', loadChildren: './pages/home/home.module#HomeModule'},
       // {path: '{profile}', loadChildren: './pages/profile/profile.module#ProfileModule'},
       // {path: 'register', loadChildren: './pages/register/register.module#RegisterModule'},
     ]

@@ -7,10 +7,16 @@ import {BitService} from 'ngx-bit';
   styleUrls: ['./dashboards.component.scss']
 })
 export class DashboardsComponent implements OnInit, OnDestroy {
+  isCollapsed = false;
+  isReverseArrow = false;
+  width = 200;
+
+
   ngOnDestroy(): void {
   }
 
-  constructor(public bit: BitService) { }
+  constructor(public bit: BitService) {
+  }
 
   ngOnInit() {
   }
