@@ -6,8 +6,8 @@
       <li nz-submenu>
         <span title><i nz-icon type="picture"></i><span class="nav-text">相册管理</span></span>
         <ul>
-          <li nz-menu-item>源相册管理</li>
-          <li nz-menu-item>发布相册管理</li>
+          <li nz-menu-item routerLink="/sourceproject">源相册管理</li>
+          <li nz-menu-item routerLink="/sprettyproject">发布相册管理</li>
         </ul>
       </li>
       <li nz-submenu>
@@ -21,17 +21,8 @@
     </ul>
   </nz-sider>
   <nz-layout>
-    <nz-content style="margin:0 16px;">
-      <nz-breadcrumb style="margin:16px 0;">
-        <nz-breadcrumb-item>相册管理</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <div style="padding:24px; background: #fff; min-height: 830px;">
-        <nz-breadcrumb [nzAutoGenerate]="true"></nz-breadcrumb>
-        <router-outlet></router-outlet>
-        Bill is a cat.
-      </div>
-    </nz-content>
-    <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+    <router-outlet></router-outlet>
+
+    <nz-footer style="text-align: center;">Johnson ©2018 三亚椰林海网络科技有限公司</nz-footer>
   </nz-layout>
 </nz-layout>
