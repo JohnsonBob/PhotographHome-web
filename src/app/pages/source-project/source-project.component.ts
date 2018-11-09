@@ -14,6 +14,7 @@ import {BitService} from 'ngx-bit';
 export class SourceProjectComponent implements OnInit {
   selectedValue = 'allProject';
   isVisiblePhotos = false;    // 是否显示创建相册
+  thiscreatePhotosType: number;
 
   constructor(private mainService: MainService,
               private storage: LocalStorage,
@@ -23,29 +24,15 @@ export class SourceProjectComponent implements OnInit {
               public bit: BitService) { }
 
   ngOnInit() {
+    this.thiscreatePhotosType = 1;
   }
 
   /**
    * 创建相册按钮点击事件
    */
   showCreatePhotosModal(): void {
+    console.log('isVisiblePhotos：' + this.isVisiblePhotos);
     this.isVisiblePhotos = true;
+    console.log('isVisiblePhotos：' + this.isVisiblePhotos);
   }
-
-  /**
-   * 创建相册弹窗确认按钮事件
-   */
-  createPhotosOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisiblePhotos = false;
-  }
-
-  /**
-   * 创建相册弹窗取消按钮事件
-   */
-  createPhotosCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisiblePhotos = false;
-  }
-
 }

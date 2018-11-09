@@ -1,3 +1,5 @@
-<p>
-  create-photos works!
-</p>
+<nz-modal [(nzVisible)]="isVisiblePhotos" nzTitle="{{createPhotosType==1 ? '新建源相册': '发布相册管理'}}" (nzOnCancel)="createPhotosCancel()" (nzOnOk)="createPhotosOk()">
+  <p>Content one</p>
+  <p>Content two</p>
+  <p>Content three</p>
+</nz-modal>
