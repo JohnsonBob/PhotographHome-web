@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import {BitService, ConfigService, EventsService, HttpService, NgxBitModule} from 'ngx-bit';
 import {RouterModule, Routes} from '@angular/router';
 import {Auth} from './guard/auth.service';
+import { CreatePhotosComponent } from './pages/create-photos/create-photos.component';
 
 
 registerLocaleData(zh);
@@ -29,6 +30,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    CreatePhotosComponent,
   ],
   imports: [
     BrowserModule,
