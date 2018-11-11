@@ -1,5 +1,34 @@
-<nz-modal [(nzVisible)]="isVisiblePhotos" nzTitle="{{createPhotosType==1 ? '新建源相册': '发布相册管理'}}" (nzOnCancel)="createPhotosCancel()" (nzOnOk)="createPhotosOk()">
-  <p>Content one</p>
-  <p>Content two</p>
-  <p>Content three</p>
+<nz-modal [(nzVisible)]="createPhoto.isVisiblePhotos" nzTitle="{{createPhoto.createPhotosType==1 ? '新建源相册': '发布相册管理'}}" (nzOnCancel)="createPhotosCancel()" (nzOnOk)="createPhotosOk()">
+  <form nz-form [formGroup]="bit.form" class="register-form" (submit)="bit.submit($event,submit)">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="projectname" nzRequired>项目名称</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input id="projectname" formControlName="projectname">
+        <nz-form-explain *ngIf="bit.form.get('projectname').dirty && bit.form.get('projectname').errors">请填写项目名称！</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>活动开始时间</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-date-picker formControlName="starttime"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>活动结束时间</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-date-picker formControlName="endtime"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6"  [nzSm]="6" [nzXs]="24" nzRequired>活动描述</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <textarea formControlName="desc" nz-input rows="2" placeholder="活动描述"></textarea>
+        <nz-form-explain *ngIf="bit.form.get('desc').dirty&&validateForm.get('desc').hasError('required')">活动描述不能为空！</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
 </nz-modal>

@@ -4,6 +4,15 @@
   </nz-breadcrumb>
   <div style="padding:24px; background: #fff; min-height: 950px;">
 
+    <button nz-button [nzSize]="size" nzType="default" (click)="showCreatePhotosModal()" >创建相册</button>
+    <app-create-photos [createPhoto] ="createPhoto"></app-create-photos>
+
+    <nz-select style="width: 120px;" nzPlaceHolder="Choose" [(ngModel)]="selectedValue">
+      <nz-option nzLabel="全部活动" nzValue="allProject"></nz-option>
+      <nz-option nzLabel="当天活动" nzValue="todayProject"></nz-option>
+      <nz-option nzLabel="近三天活动" nzValue="nearlyThreeProject"></nz-option>
+      <nz-option nzLabel="近七天活动" nzValue="nearlySevenProject"></nz-option>
+    </nz-select>
 
   </div>
 </nz-content>

@@ -3,8 +3,9 @@ import {BitService} from 'ngx-bit';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 import {NzNotificationService} from 'ng-zorro-antd';
 import {MainService} from '../../api/main.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {CreatePhoto} from '../../create-photo';
 
 @Component({
   selector: 'app-create-photos',
@@ -12,8 +13,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-photos.component.scss']
 })
 export class CreatePhotosComponent implements OnInit {
-  @Input() createPhotosType: number;    // 创建相册类型 1、源相册  2、发布相册
-  @Input() isVisiblePhotos: boolean;    // 是否显示创建相册
+  @Input() createPhoto: CreatePhoto;
 
   constructor(private mainService: MainService,
               private storage: LocalStorage,
@@ -23,28 +23,51 @@ export class CreatePhotosComponent implements OnInit {
               public bit: BitService) { }
 
   ngOnInit() {
+    this.bit.form = this.fb.group({
+      projectname            : [ null, [ Validators.required ] ],
+      starttime              : [ null, [ Validators.required ] ],
+      endtime                : [ null, [ Validators.required ] ],
+      desc                   : [ null, [ Validators.required ] ],
+    });
   }
 
   /**
    * 创建相册按钮点击事件
    */
   showCreatePhotosModal(): void {
-    this.isVisiblePhotos = true;
+    this.createPhoto.isVisiblePhotos = true;
   }
 
   /**
    * 创建相册弹窗确认按钮事件
    */
   createPhotosOk(): void {
-    this.isVisiblePhotos = false;
-    console.log('Button ok clicked!' + this.isVisiblePhotos);
+   // this.createPhoto.isVisiblePhotos = false;
+    console.log('Button ok clicked!' + this.createPhoto.isVisiblePhotos);
   }
 
   /**
    * 创建相册弹窗取消按钮事件
    */
   createPhotosCancel(): void {
-    this.isVisiblePhotos = false;
-    console.log('Button cancel clicked!' + this.isVisiblePhotos);
+    this.createPhoto.isVisiblePhotos = false;
+    console.log('Button cancel clicked!' + this.createPhoto.isVisiblePhotos);
+  }
+
+  /**
+   * TODO:提交
+   */
+  submit = (data) => {
+    // console.log('提交');
+    this.loading = true;
+    if(!this.bit.form.valid) return;
+    this.mainService.register(data.username, data.password, data.email, data.mobile, data.nickname).subscribe(res => {
+      if (res.code) {
+        this.notification.success(this.bit.l['register_tips'], this.bit.l['register_success']);
+        this.router.navigateByUrl('/login');
+      } else {
+        this.loginFailed(res.msg);
+      }
+    });
   }
 }

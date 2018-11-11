@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DashboardsComponent} from './dashboards/dashboards.component';
 import {AppExtModule} from './app.ext.module';
+import {CreatePhotosComponent} from './pages/create-photos/create-photos.component';
 
 const routes: Routes = [
   {

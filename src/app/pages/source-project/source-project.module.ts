@@ -18,7 +18,8 @@ const routes: Routes = [
   ],
   declarations: [
     SourceProjectComponent,
-    CreatePhotosComponent]
+    CreatePhotosComponent,
+  ]
 })
 export class SourceProjectModule {
 
