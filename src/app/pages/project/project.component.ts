@@ -11,7 +11,6 @@ import {Project} from '../../common/project';
  * 项目组件 2018年11月12日14:33:32
  */
 export class ProjectComponent implements OnInit {
-  @Input project: Project;
 
   constructor() { }
 

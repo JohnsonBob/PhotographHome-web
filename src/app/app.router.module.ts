@@ -11,6 +11,9 @@ const routes: Routes = [
       {path: '', loadChildren: './pages/source-project/source-project.module#SourceProjectModule'},
       {path: 'sourceproject', loadChildren: './pages/source-project/source-project.module#SourceProjectModule'},
       {path: 'sprettyproject', loadChildren: './pages/spretty-project/spretty-project.module#SprettyProjectModule'},
+      {path: 'sprettyproject/projectdetail/:id', loadChildren: './pages/project-detail/project-detail.module#ProjectDetailModule'},
+      {path: 'sourceproject/projectdetail/:id', loadChildren: './pages/project-detail/project-detail.module#ProjectDetailModule'},
+      // {path: 'projectdetail/:id', loadChildren: './pages/project-detail/project-detail.module#ProjectDetailModule'},
       // {path: '{profile}', loadChildren: './pages/profile/profile.module#ProfileModule'},
       // {path: 'register', loadChildren: './pages/register/register.module#RegisterModule'},
     ]

@@ -58,20 +58,4 @@ export class CreatePhotosComponent implements OnInit {
     console.log('Button cancel clicked!' + this.createPhoto.isVisiblePhotos);
   }
 
-  /**
-   * TODO:提交
-   */
-  submit = (data) => {
-    // console.log('提交');
-    this.loading = true;
-    if(!this.bit.form.valid) return;
-    this.mainService.register(data.username, data.password, data.email, data.mobile, data.nickname).subscribe(res => {
-      if (res.code) {
-        this.notification.success(this.bit.l['register_tips'], this.bit.l['register_success']);
-        this.router.navigateByUrl('/login');
-      } else {
-        this.loginFailed(res.msg);
-      }
-    });
-  }
 }
