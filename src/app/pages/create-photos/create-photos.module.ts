@@ -14,9 +14,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     AppExtModule,
-    RouterModule.forChild(routes)
+    RouterModule
   ],
-  declarations: [CreatePhotosComponent]
+  declarations: [CreatePhotosComponent],
+  exports: [
+    CreatePhotosComponent
+  ]
 })
 export class CreatePhotosModule {
 

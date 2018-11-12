@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {SourceProjectComponent} from './source-project.component';
 import {AppExtModule} from '../../app.ext.module';
-import {CreatePhotosComponent} from '../create-photos/create-photos.component';
+import {CreatePhotosModule} from '../create-photos/create-photos.module';
 
 const routes: Routes = [
   {
@@ -14,11 +14,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     AppExtModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CreatePhotosModule,
   ],
   declarations: [
     SourceProjectComponent,
-    CreatePhotosComponent,
   ]
 })
 export class SourceProjectModule {

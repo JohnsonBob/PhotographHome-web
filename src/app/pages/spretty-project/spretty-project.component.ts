@@ -7,9 +7,10 @@ import {CreatePhoto} from '../../create-photo';
   styleUrls: ['./spretty-project.component.scss']
 })
 export class SprettyProjectComponent implements OnInit {
+  selectedValue = 'allProject';
 
   createPhoto: CreatePhoto = {
-    createPhotosType: 1, isVisiblePhotos: false
+    createPhotosType: 2, isVisiblePhotos: false
   };
 
   constructor() { }
