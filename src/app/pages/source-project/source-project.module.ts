@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {SourceProjectComponent} from './source-project.component';
 import {AppExtModule} from '../../app.ext.module';
 import {CreatePhotosModule} from '../create-photos/create-photos.module';
+import {ProjectModule} from '../project/project.module';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     AppExtModule,
     RouterModule.forChild(routes),
     CreatePhotosModule,
+    ProjectModule,
   ],
   declarations: [
     SourceProjectComponent,

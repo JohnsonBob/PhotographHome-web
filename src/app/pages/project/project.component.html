@@ -1,0 +1,12 @@
+<nz-card style="width:240px;"  [nzHoverable]="false"  [nzCover]="coverTemplate" [nzActions]="[actionEdit,actionDelete]">
+  <nz-card-meta routerLink="/sprettyproject" nzTitle="项目名称" nzDescription="这里是项目描述这里是项目描述这里是项目描述这里是项目描述" ></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img alt="相册封面" routerLink="/sprettyproject" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
+</ng-template>
+<ng-template #actionEdit>
+  <i nz-icon type="edit" (click)="editProject()"></i>
+</ng-template>
+<ng-template #actionDelete >
+  <i nz-icon type="delete" (click)="deleteProject()"></i>
+</ng-template>

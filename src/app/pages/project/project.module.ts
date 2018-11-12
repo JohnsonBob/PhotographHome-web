@@ -1,18 +1,18 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AppExtModule} from '../../app.ext.module';
-import {CreatePhotosComponent} from './create-photos.component';
+import {ProjectComponent} from './project.component';
 
 @NgModule({
   imports: [
     AppExtModule,
     RouterModule
   ],
-  declarations: [CreatePhotosComponent],
+  declarations: [ProjectComponent],
   exports: [
-    CreatePhotosComponent
+    ProjectComponent
   ]
 })
-export class CreatePhotosModule {
+export class ProjectModule {
 
 }

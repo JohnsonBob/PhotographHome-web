@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         this.loginFailed();
       }
     });
-  }
+  };
 
   /**
    * TODO:设置存储

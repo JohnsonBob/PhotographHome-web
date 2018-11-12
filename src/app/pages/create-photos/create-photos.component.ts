@@ -12,6 +12,10 @@ import {CreatePhoto} from '../../create-photo';
   templateUrl: './create-photos.component.html',
   styleUrls: ['./create-photos.component.scss']
 })
+
+/**
+ * 创建相册弹窗组件 2018年11月12日14:29:27
+ */
 export class CreatePhotosComponent implements OnInit {
   @Input() createPhoto: CreatePhoto;
 

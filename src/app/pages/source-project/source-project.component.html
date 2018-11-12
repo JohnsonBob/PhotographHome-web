@@ -3,25 +3,34 @@
     <nz-breadcrumb-item routerLink="/sourceproject">源相册管理</nz-breadcrumb-item>
   </nz-breadcrumb>
   <div style="padding:24px; background: #fff; min-height: 950px;">
+    <div style="display: block">
+      <button nz-button [nzSize]="size" nzType="default" (click)="showCreatePhotosModal()" >创建相册</button>
+      <app-create-photos [createPhoto] ="createPhoto"></app-create-photos>
 
-    <button nz-button [nzSize]="size" nzType="default" (click)="showCreatePhotosModal()" >创建相册</button>
+      <nz-select style="width: 120px;" nzPlaceHolder="Choose" [(ngModel)]="selectedValue">
+        <nz-option nzLabel="全部活动" nzValue="allProject"></nz-option>
+        <nz-option nzLabel="当天活动" nzValue="todayProject"></nz-option>
+        <nz-option nzLabel="近三天活动" nzValue="nearlyThreeProject"></nz-option>
+        <nz-option nzLabel="近七天活动" nzValue="nearlySevenProject"></nz-option>
+      </nz-select>
+    </div>
 
-    <!--<nz-modal [(nzVisible)]="isVisiblePhotos" nzTitle="新建源相册" (nzOnCancel)="createPhotosCancel()" (nzOnOk)="createPhotosOk()">
-      <p>Content one</p>
-      <p>Content two</p>
-      <p>Content three</p>
-    </nz-modal>-->
+    <div class="projeclist">
+      <nz-list
+        [nzDataSource]="data"
+        [nzRenderItem]="item"
+        [nzGrid]="{gutter: 24, xs: 24, sm: 24, md: 12, lg: 12, xl: 6 , xxl: 4}">
+        <ng-template #item let-item>
+          <nz-list-item [nzContent]="nzContent">
+            <ng-template #nzContent>
+              <app-project ></app-project>
+            </ng-template>
+          </nz-list-item>
+        </ng-template>
+      </nz-list>
 
-    <app-create-photos [createPhoto] ="createPhoto"></app-create-photos>
 
-    <nz-select style="width: 120px;" nzPlaceHolder="Choose" [(ngModel)]="selectedValue">
-      <nz-option nzLabel="全部活动" nzValue="allProject"></nz-option>
-      <nz-option nzLabel="当天活动" nzValue="todayProject"></nz-option>
-      <nz-option nzLabel="近三天活动" nzValue="nearlyThreeProject"></nz-option>
-      <nz-option nzLabel="近七天活动" nzValue="nearlySevenProject"></nz-option>
-    </nz-select>
-
-
+    </div>
 
   </div>
 </nz-content>
